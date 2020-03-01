@@ -10,8 +10,8 @@ def initVideoCams(camNo):
     for cam in camNo:
         cap.append(cv2.VideoCapture(cam))
         print("Check Cam",cam,"Open: "+str(cap[count].isOpened()))
-        cap[count].set(3, 352)
-        cap[count].set(4, 240)
+        # cap[count].set(3, 352)
+        # cap[count].set(4, 240)
         count += 1
 
     return cap
@@ -53,7 +53,7 @@ def scanVideoCams(caps):
 
 #-----------------------------------------------------------
 
-cap = initVideoCams([0])
+cap = initVideoCams([0,1])
 while(True):
     scanVideoCams(cap)
 
