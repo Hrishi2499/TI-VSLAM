@@ -48,7 +48,7 @@ def scanVideoCams(caps):
 
 #-----------------------------------------------------------
 
-cap = initVideoCams([0,1])
+cap = initVideoCams([0])
 while(True):
     scanVideoCams(cap)
 
