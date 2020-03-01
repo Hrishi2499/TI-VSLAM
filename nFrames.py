@@ -10,8 +10,8 @@ def initVideoCams(camNo):
     for cam in camNo:
         cap.append(cv2.VideoCapture(cam))
         print("Check Cam",cam,"Open: "+str(cap[count].isOpened()))
-        cap[count].set(3, 352)
-        cap[count].set(4, 240)
+        # cap[count].set(3, 352)
+        # cap[count].set(4, 240)
         count += 1
 
     return cap
@@ -51,11 +51,28 @@ def scanVideoCams(caps):
             print("Check Cam ",count," Open: "+str(cap.isOpened()))
         cv2.destroyAllWindows()
 
+def capture(caps):
+    rets = []
+    frames = []
+
+    # Capture frame-by-frame
+    count = 0
+    for cap in caps:
+        rets.append(None)
+        frames.append(None)
+        rets[count], frames[count] = cap.read()
+        cv2.imwrite("img " + str(count) + ".png", frames[count])
+        count += 1
+        cap.release()
+
+
 #-----------------------------------------------------------
 
-cap = initVideoCams([0])
-while(True):
-    scanVideoCams(cap)
+cap = initVideoCams([0,1])
+# while(True):
+#     scanVideoCams(cap)
+capture(cap)
+
 
 #-----------------------------------------------------------
 
