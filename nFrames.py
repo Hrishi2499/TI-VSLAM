@@ -6,9 +6,14 @@ import cv2
 def initVideoCams(camNo):
     # Create Objects of VideoCapture for each Cam
     cap = []
+    count = 0
     for cam in camNo:
         cap.append(cv2.VideoCapture(cam))
-        print("Check Cam",cam,"Open: "+str(cap[len(cap) - 1].isOpened()))
+        print("Check Cam",cam,"Open: "+str(cap[count].isOpened()))
+        cap[count].set(3, 640)
+        cap[count].set(4, 480)
+        count += 1
+
     return cap
 
 def scanVideoCams(caps):
