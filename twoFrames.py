@@ -37,7 +37,7 @@ def closeVideoCams(cap1, cap2):
 
 #-----------------------------------------------------------
 
-cap = initVideoCams(2,4)
+cap = initVideoCams(0,2)
 while(True):
     scanVideoCams(cap[0],cap[1])
 
