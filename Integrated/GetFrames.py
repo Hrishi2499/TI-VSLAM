@@ -39,13 +39,12 @@ def scanVideoCams(capLeft, capRight):
 
 def captureAndPost(capLeft, capRight, count):
     # Capture frame-by-frame
+    # Capturing Left & Right Cam Images
     retLeft, frameLeft = capLeft.read()
     retRight, frameRight = capRight.read()
 
-    grayLeft = cv2.cvtColor(frameLeft, cv2.COLOR_BGR2GRAY)
-    grayRight = cv2.cvtColor(frameRight, cv2.COLOR_BGR2GRAY)
-
-    GetDepthImg.getdepthImg(grayLeft, grayRight, count)
+    # Generating Depth Image
+    GetDepthImg.getdepthImg(frameLeft, frameRight, count)
 
     if (storeMode):
         if not os.path.exists(storeDirectory):
@@ -54,19 +53,24 @@ def captureAndPost(capLeft, capRight, count):
         cv2.imwrite(storeDirectory+"/test_" + str(count) + "_r.png", frameRight)
         print("Written",str(count))
 
-    
-
 capLeft, capRight = initVideoCams()
 count = 0
 start_time = time.time()
 once = -1
+
 while(True):
     end_time = time.time()
     # scanVideoCams(capLeft, capRight)   
     if int(end_time-start_time) % interval == 0 and int(end_time-start_time) != once:
         once = int(end_time-start_time)
+
+        # Destroy Depth Image Windows
         GetDepthImg.destroyWindow()
+
+        # Capture Stereo Images & Pass to Depth Image Creation
         captureAndPost(capLeft, capRight, count)   
+
+        # File Number Count
         count += 1
         # time.sleep(0.1)
 
