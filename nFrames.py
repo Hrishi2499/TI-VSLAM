@@ -66,7 +66,7 @@ def capture(caps):
         cap.release()
 #-----------------------------------------------------------
 
-cap = initVideoCams([0,1])
+cap = initVideoCams([2])
 while(True):
     scanVideoCams(cap)
 

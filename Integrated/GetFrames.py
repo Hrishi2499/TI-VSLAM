@@ -65,8 +65,8 @@ while(True):
     # scanVideoCams(capLeft, capRight)   
     if int(end_time-start_time) % interval == 0 and int(end_time-start_time) != once:
         once = int(end_time-start_time)
-        captureAndPost(capLeft, capRight, count)   
         GetDepthImg.destroyWindow()
+        captureAndPost(capLeft, capRight, count)   
         count += 1
         # time.sleep(0.1)
 
