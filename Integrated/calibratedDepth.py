@@ -65,7 +65,7 @@ def stereo_depth_map(rectified_pair):
     cv2.imshow("Image", disparity_grayscale)
     key = cv2.waitKey(1) & 0xFF   
     if key == ord("q"):
-        quit();
+        quit()
     return disparity_grayscale
 
 # def load_map_settings( fName ):
